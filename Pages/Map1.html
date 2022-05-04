@@ -1,0 +1,227 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Jumbotron example · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/jumbotron/">
+
+      <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+
+</head>
+<body>
+
+   
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+              
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <strong>Maps- Panel Area</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+    
+        <br>
+        <p class="lead"> Using the search bar you can look up any city or location you would like and view the total solar panel area in the city. The larger the purple dot, the greater the panel area in that location
+        <br>
+</div>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Residential_Solar_US</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    </style>
+    </head>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+            
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <strong>Maps - Panel Area</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+    <body>
+        <script src = "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+        <link rel="stylesheet" 
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+         
+        <style>
+        .geocoder {
+        position: absolute;
+        z-index: 1;
+        width: 30%;
+        left: 90%;
+        margin-left: -25%;
+        top: 180px;
+        }
+        .mapboxgl-ctrl-geocoder {
+        min-width: 100%;
+        }
+        #map {
+        margin-top: 160px;
+        }
+
+        .panel-info {
+  position: absolute;
+  font-family: sans-serif;
+  margin-top: 100px;
+  margin-left: 5px;
+  padding: 5px;
+  width: 20%;
+  border: 2px solid black;
+  font-size: 14px;
+  color: #222;
+  background-color: #fff;
+  border-radius: 3px;
+}
+  </style>
+
+
+<!-- Add labels to map -->
+
+<div class='panel-info'>
+  <div><strong>Latitude:</strong> <span id='lat'></span></div>
+  <div><strong>Longitude:</strong> <span id='lon'></span></div>
+  <div><strong>No of panels:</strong> <span id='solar_system_count_residential'></span></div>
+</div>
+
+
+
+<div id='map'></div>
+
+<div id = "geocoder" class="geocoder"></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoianJhaGVtdHVsbGEiLCJhIjoiY2wxbXljbHJzMDA3dzNrbzBpcGxnM2E5eiJ9.MNGAtCx1A5x7Txef22SFAg';
+
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/jrahemtulla/cl1mx4494000x14oxxarv48j6',
+center: [-71.058, 42.36],
+zoom: 8
+});
+
+//Add control to the map 
+
+const geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+});
+
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+const latDisplay = document.getElementById('lat');
+const lonDisplay = document.getElementById('lon');
+const solar_system_count_residentialDisplay = document.getElementById('solar_system_count_residential');
+
+//Adding the map layer & hover features
+
+map.on('load', () => {
+map.addSource('deep_solar2', {
+  type: 'geojson',
+  data: "https://api.mapbox.com/datasets/v1/jrahemtulla/cl1wiewhp39lj21qx2w7kjaal?access_token=pk.eyJ1IjoianJhaGVtdHVsbGEiLCJhIjoiY2wxbXljbHJzMDA3dzNrbzBpcGxnM2E5eiJ9.MNGAtCx1A5x7Txef22SFAg",
+  generateId: true // This ensures that all features have unique IDs
+});
+});
+
+
+// code from the next step will go here!
+let row_num = null;
+
+map.on('mousemove', 'deep_solar2', (event) => {
+map.getCanvas().style.cursor = 'pointer';
+// Set constants equal to the current feature's magnitude, location, and time
+const maplat = event.features[0].properties.lat;
+const maplon = event.features[0].properties.lon;
+const mapsolar_system_count_residential = new Date(event.features[0].properties.solar_system_count_residential);
+
+// Check whether features exist
+if (event.features.length === 0) return;
+// Display the lat, long, no of solar panels in the sidebar
+latDisplay.textContent = mapLatitude;
+lonDisplay.textContent = mapLongitude;
+solar_system_count_residentialDisplay.textContent = mapsolar_system_count_residential;
+
+// If row_num for the hovered feature is not null,
+// use removeFeatureState to reset to the default behavior
+if (row_num) {
+  map.removeFeatureState({
+    source: 'deep_solar2',
+    id: row_num
+  });
+}
+
+row_num = event.features[0].id;
+
+// When the mouse moves over the earthquakes-viz layer, update the
+// feature state for the feature under the mouse
+map.setFeatureState(
+  {
+    source: 'deep_solar2',
+    id: row_num
+  },
+  {
+    hover: true
+  }
+);
+});
+
+
+</script>
+
+</body>
+</html>
+
+  
