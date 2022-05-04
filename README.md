@@ -6,6 +6,7 @@ Our project has two aims
   2. To analyse whether tax rebate policies for solar panels have taken into consideration socioeconomic factors and potential power generation of a location when being designed.
 
 To view our summary web page, see the pages folder and within it <b> homepage.html </b>
+<br>
 To view the data cleanup, analytics and optimization - see <b> Project_1_001.ipynb </b>
 For our first aim, you can view our data visualization through our web-interface, which can be accessed through the pages folder under homepage.html
 And for the second aim, you can view our data analysis and run our code from the colab file uploaded - 
