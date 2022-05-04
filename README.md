@@ -13,10 +13,10 @@ To view the data cleanup, analytics and optimization - see the colab file <b> Pr
 
 Our data sources are below:
 
-1. Stanford Deep Solar 
-2. Berkeley data
-3. Google sunroof
-4. Zipdata
+1. Stanford Deep Solar (downloaded from the website)
+2. Berkeley data (too heavy to be uploaded on git, should be downloaded from https://emp.lbl.gov/tracking-the-sun/, this is the public data file zi,data_2.csv)
+3. Google sunroof (on git)
+4. Zipdata (on git)
 
 In addition the libraries we used are below 
 
