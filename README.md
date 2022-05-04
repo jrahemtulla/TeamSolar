@@ -6,10 +6,12 @@ Our project has two aims
   1. To provide a better understanding of the solar panel concentrations and uptake in the US - showing the locations, panel area size of solar panels in the US as well as the solar radiation 
   2. To analyse whether tax rebate policies for solar panels have taken into consideration socioeconomic factors and potential power generation of a location when being designed.
 
-To view our summary web page, see the <b>pages<b> folder and within it <b> index.html </b>
+To view our web interface check out https://jrahemtulla.github.io/TeamSolar/
+To view our web pages, see the <b>pages<b> folder 
 <br>
 To view the data cleanup, analytics and optimization - see the colab file <b> Project_1_001.ipynb </b>
 <br>
+ 
 
 Our data sources are below:
 
