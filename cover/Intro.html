@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Cover Template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    
+<div class="cover-container d-flex w-100 h-50 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Data Vizualization</a>
+        <a class="nav-link" href="maps.html">Maps</a>
+        <br>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <br>
+    <h3>American Residential Solar Panels</h3>
+    <br>
+    <img src = "https://images.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg?cs=srgb&dl=pexels-pixabay-159397.jpg&fm=jpg"
+    width = 100%
+    length = 300px>
+    <p class="lead">Use the search bar to locate your preferred city and check out how many solar panels have been installed</p>
+    <p class="lead">
+    
+      
+<!-- Edit out button and footer <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+    <footer class="mt-auto text-white-50">
+    <p>Project 1.001 - Team Solar</p>
+  </footer>
+-->   
+</p>
+  </main>
+
+</div>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Residential_Solar_US</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    </style>
+    </head>
+
+    <body>
+        <script src = "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+        <link rel="stylesheet" 
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+         
+        <style>
+        .geocoder {
+        position: absolute;
+        z-index: 1;
+        width: 30%;
+        left: 90%;
+        margin-left: -25%;
+        top: 500px;
+        }
+        .mapboxgl-ctrl-geocoder {
+        min-width: 100%;
+        }
+        #map {
+        margin-top: 500px;
+        }
+
+        .panel-info {
+  position: absolute;
+  font-family: sans-serif;
+  margin-top: 450px;
+  margin-left: 5px;
+  padding: 5px;
+  width: 20%;
+  border: 2px solid black;
+  font-size: 14px;
+  color: #222;
+  background-color: #fff;
+  border-radius: 3px;
+}
+  </style>
+
+
+<!-- Add labels to map -->
+
+<div class='panel-info'>
+  <div><strong>Latitude:</strong> <span id='lat'></span></div>
+  <div><strong>Longitude:</strong> <span id='lon'></span></div>
+  <div><strong>No of panels:</strong> <span id='solar_system_count_residential'></span></div>
+</div>
+
+
+
+<div id='map'></div>
+
+<div id = "geocoder" class="geocoder"></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoianJhaGVtdHVsbGEiLCJhIjoiY2wxbXljbHJzMDA3dzNrbzBpcGxnM2E5eiJ9.MNGAtCx1A5x7Txef22SFAg';
+
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/jrahemtulla/cl1mx4494000x14oxxarv48j6',
+center: [-71.058, 42.36],
+zoom: 8
+});
+
+//Add control to the map 
+
+const geocoder = new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+});
+
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+const latDisplay = document.getElementById('lat');
+const lonDisplay = document.getElementById('lon');
+const solar_system_count_residentialDisplay = document.getElementById('solar_system_count_residential');
+
+//Adding the map layer & hover features
+
+map.on('load', () => {
+map.addSource('deep_solar2', {
+  type: 'geojson',
+  data: "https://api.mapbox.com/datasets/v1/jrahemtulla/cl1wiewhp39lj21qx2w7kjaal?access_token=pk.eyJ1IjoianJhaGVtdHVsbGEiLCJhIjoiY2wxbXljbHJzMDA3dzNrbzBpcGxnM2E5eiJ9.MNGAtCx1A5x7Txef22SFAg",
+  generateId: true // This ensures that all features have unique IDs
+});
+});
+
+
+// code from the next step will go here!
+let row_num = null;
+
+map.on('mousemove', 'deep_solar2', (event) => {
+map.getCanvas().style.cursor = 'pointer';
+// Set constants equal to the current feature's magnitude, location, and time
+const maplat = event.features[0].properties.lat;
+const maplon = event.features[0].properties.lon;
+const mapsolar_system_count_residential = new Date(event.features[0].properties.solar_system_count_residential);
+
+// Check whether features exist
+if (event.features.length === 0) return;
+// Display the lat, long, no of solar panels in the sidebar
+latDisplay.textContent = mapLatitude;
+lonDisplay.textContent = mapLongitude;
+solar_system_count_residentialDisplay.textContent = mapsolar_system_count_residential;
+
+// If row_num for the hovered feature is not null,
+// use removeFeatureState to reset to the default behavior
+if (row_num) {
+  map.removeFeatureState({
+    source: 'deep_solar2',
+    id: row_num
+  });
+}
+
+row_num = event.features[0].id;
+
+// When the mouse moves over the earthquakes-viz layer, update the
+// feature state for the feature under the mouse
+map.setFeatureState(
+  {
+    source: 'deep_solar2',
+    id: row_num
+  },
+  {
+    hover: true
+  }
+);
+});
+
+
+</script>
+
+</body>
+</html>
+
+  
